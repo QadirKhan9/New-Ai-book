@@ -1,6 +1,5 @@
 {
   "framework": "docusaurus",
-  "rootDirectory": "my-website",
   "routes": [
     {
       "src": "/(.*)",
