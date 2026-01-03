@@ -14,12 +14,11 @@ const config: Config = {
   // Vercel-friendly config - using localhost as placeholder (will be overridden by Vercel)
   url: 'http://localhost:3000',
   baseUrl: '/',
- 
+
 
 
   onBrokenLinks: 'throw',
 
-  
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -42,6 +41,34 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    // Plugin to inject environment variables
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html'],
+      },
+    ],
+    () => ({
+      name: 'custom-webpack-config',
+      configureWebpack: (config, isServer, utils) => {
+        const webpack = require('webpack');
+        return {
+          resolve: {
+            fallback: {
+              process: require.resolve('process/browser'),
+            },
+          },
+          plugins: [
+            new webpack.DefinePlugin({
+              'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:8000'),
+            }),
+          ],
+        };
+      },
+    }),
+  ],
+
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
@@ -55,17 +82,43 @@ const config: Config = {
         href: '/',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'bookSidebar',
-          position: 'left',
-          label: 'Book',
-        },
-        {
-          href: 'https://github.com/QadirKhan9/Physical-AI-Humanoid-Robotics-Book',
-          label: 'GitHub',
-          position: 'right',
-        },
+{
+  type: 'docSidebar',
+  sidebarId: 'bookSidebar',
+  position: 'left',
+  label: 'Book',
+},
+
+{
+  type: 'dropdown',
+  label: 'Account',
+  position: 'right',
+  items: [
+    {
+      label: 'Dashboard',
+      to: '/dashboard',
+    },
+    {
+      label: 'Profile',
+      to: '/profile',
+    },
+    {
+      label: 'Sign out',
+      to: '/',
+
+    },
+    {
+      label: 'Add another account',
+      to: '/signup',
+
+    }
+    ],
+},
+{
+  href: 'https://github.com/QadirKhan9/Physical-AI-Humanoid-Robotics-Book',
+  label: 'GitHub',
+  position: 'right',
+},
       ],
     },
     footer: {

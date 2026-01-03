@@ -1,62 +1,55 @@
-# Constitution: AI/Spec-Driven Book Creation on Physical AI & Humanoid Robotics
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
-## Project Overview
-Define how AI systems will collaborate to produce a complete technical book using a specification-driven workflow. Establish rules for writing, structuring, and refining all book chapters, modules, and pages.
+## Core Principles
 
-## Objectives
-- Produce a clear, accurate, professional book.
-- Follow specification-first workflow using Spec-Kit Plus.
-- Generate Docusaurus-ready Markdown.
-- Maintain consistency across chapters (tone, formatting, terminology).
-- Support modular writing: each module, chapter, and section must be individually specifiable.
-- Ensure content is deployable to GitHub Pages.
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-## AI Behavior Rules
-- Follow all /sp.specify prompts exactly.
-- User instructions override all rules.
-- Maintain accuracy, avoid hallucinations.
-- Produce clean, formatted Markdown suitable for Docusaurus.
-- Keep style consistent across entire project.
-- Use step-by-step explanations, examples, diagrams when needed.
-- Provide corrections or clarifications when specs are unclear.
-- Do not introduce new technologies or topics outside the scope unless user asks.
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-## Output Requirements
-- All content must be Docusaurus-compatible Markdown.
-- Structure content using:
-  - # Title
-  - ## Overview
-  - ### Concepts
-  - ### Steps
-  - ### Examples
-  - ### Summary
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-## Tone
-- Educational, beginner-friendly, technically correct.
-- Clear explanations with practical steps.
-- No unnecessary academic complexity.
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-## Structure
-- Each chapter starts from a specification
-- Include Objective, example, steps, and a final exercise
-- Every Technical Issues section:
-    - Inputs, output, architecture, code, Failure mode, safety notes
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-## Consistency Rules
-- Keep terminology, formatting, tone uniform.
-- Reuse definitions and concepts across modules.
-- Use same code style, same headings, and same structure everywhere.
+### [PRINCIPLE_6_NAME]
 
-## Prohibited
-- Hallucinated facts or technologies.
-- Changing structure without instruction.
-- Adding fake citations.
-- Producing content outside user specifications.
 
-## Final Authority
-User instructions override Constitution → Specifications → AI autonomy.
+[PRINCIPLE__DESCRIPTION]
 
-## Mission
-Follow a spec-driven workflow to produce a professional, publish-ready book using Docusaurus, managed through Spec-Kit Plus and deployable on GitHub Pages.
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-12 | **Last Amended**: 2025-12-12
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+
+## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->

@@ -1,0 +1,261 @@
+.chatWidget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatToggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--robotics-primary), var(--robotics-secondary));
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: var(--robotics-glow), 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.chatToggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--robotics-glow-blue), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chatContainer {
+  width: 380px;
+  max-height: 520px;
+  background: var(--robotics-glass-bg);
+  border: 1px solid var(--robotics-glass-border);
+  border-radius: 16px;
+  box-shadow: var(--robotics-glow), 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.chatHeader {
+  background: linear-gradient(to right, var(--robotics-primary), var(--robotics-secondary));
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chatHeader h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: var(--ifm-heading-font-weight);
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.closeButton {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--robotics-card-bg);
+  border-top: 1px solid var(--robotics-card-border);
+  border-bottom: 1px solid var(--robotics-card-border);
+}
+
+/* Custom scrollbar for messages container */
+.chatMessages::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.chatMessages::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+.chatMessages::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--robotics-primary), var(--robotics-secondary));
+  border-radius: 4px;
+}
+
+.chatMessages::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--robotics-secondary), var(--robotics-accent));
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  position: relative;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background: linear-gradient(to right, var(--robotics-primary), var(--robotics-secondary));
+  color: white;
+  border-radius: 18px 4px 18px 18px;
+  padding: 12px 16px;
+  box-shadow: var(--robotics-glow), 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.botMessage {
+  align-self: flex-start;
+  background: var(--robotics-card-bg);
+  border: 1px solid var(--robotics-card-border);
+  color: var(--robotics-text-primary);
+  border-radius: 4px 18px 18px 18px;
+  padding: 12px 16px;
+  box-shadow: var(--robotics-glow), 0 4px 8px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.typingIndicator div {
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  background-color: var(--robotics-primary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typingIndicator div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typingIndicator div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.chatInputArea {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid var(--robotics-card-border);
+  background: var(--robotics-card-bg);
+}
+
+.chatInput {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid var(--robotics-card-border);
+  border-radius: 20px;
+  resize: none;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  background: var(--robotics-card-bg);
+  color: var(--robotics-text-primary);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for textarea */
+.chatInput::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.chatInput::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+.chatInput::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--robotics-primary), var(--robotics-secondary));
+  border-radius: 4px;
+}
+
+.chatInput::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--robotics-secondary), var(--robotics-accent));
+}
+
+.chatInput:focus {
+  outline: none;
+  border-color: var(--robotics-primary);
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sendButton {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background: linear-gradient(to right, var(--robotics-primary), var(--robotics-secondary));
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--robotics-glow), 0 4px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.sendButton:hover:not(:disabled) {
+  background: linear-gradient(to right, var(--robotics-secondary), var(--robotics-accent));
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: var(--robotics-glow-blue), 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sendButton:disabled {
+  background: var(--robotics-card-border);
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Assistant with Authentication</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a12, #1a1a2e);
+            color: #e2e8f0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                circle at 20% 30%,
+                rgba(0, 255, 255, 0.05) 0%,
+                transparent 40%
+            ),
+            radial-gradient(
+                circle at 80% 70%,
+                rgba(138, 43, 226, 0.05) 0%,
+                transparent 40%
+            ),
+            radial-gradient(
+                circle at 40% 80%,
+                rgba(0, 136, 255, 0.05) 0%,
+                transparent 40%
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ffff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-signup {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+        }
+
+        .btn-signin {
+            background: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ffff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #cbd5e0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Physical AI & Robotics</div>
+            <div class="auth-buttons">
+                <a href="/signup" class="btn btn-signup">Sign Up</a>
+                <a href="/signin" class="btn btn-signin">Sign In</a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>Learn Physical AI & Humanoid Robotics</h1>
+            <p>Comprehensive guide to building intelligent physical systems with modern AI techniques</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Authentication System</h3>
+                <p>Secure user registration and login with profile data collection for personalized experience</p>
+            </div>
+            <div class="feature-card">
+                <h3>RAG Chatbot</h3>
+                <p>Ask questions about the book content and get contextual answers powered by retrieval augmented generation</p>
+            </div>
+            <div class="feature-card">
+                <h3>Personalization</h3>
+                <p>Content tailored to your software and hardware background for optimal learning experience</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Physical AI & Robotics Book. All rights reserved.</p>
+    </footer>
+
+    <!-- ChatWidget will be injected here -->
+    <div id="chat-widget-root"></div>
+
+    <script>
+        // Simple script to check authentication status and update UI
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            const signupBtn = document.querySelector('.btn-signup');
+            const signinBtn = document.querySelector('.btn-signin');
+            
+            if (token) {
+                // User is authenticated, change buttons to show profile/logout
+                signupBtn.textContent = 'Profile';
+                signupBtn.href = '/profile';
+                signinBtn.textContent = 'Logout';
+                signinBtn.href = '#';
+                signinBtn.onclick = function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.reload();
+                };
+            }
+        });
+    </script>
+</body>
+</html>
