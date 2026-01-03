@@ -1,73 +1,158 @@
-# Urdu Translation Feature
+# New AI Book Project
 
-This feature allows users to translate chapter content to Urdu by clicking a button at the start of each chapter.
+Welcome to the New AI Book project! This is a comprehensive platform that combines Docusaurus-based documentation with AI-powered features, authentication, and translation capabilities.
 
-## How it Works
+## 🚀 Features
 
-1. A translation button is added at the beginning of each chapter
-2. When clicked, the button sends the chapter content to the backend translation API
-3. The backend processes the request and returns the translated content
-4. The translated content replaces the original content on the page
-5. Users can toggle back to the original content by clicking the button again
+- **AI-Powered Translation**: Translate content to Urdu and other languages with a single click
+- **User Authentication**: Secure login and profile management system
+- **Interactive Chat Widget**: AI-powered chat functionality for enhanced user experience
+- **Text Selection AI**: Intelligent text processing and analysis tools
+- **Responsive Design**: Mobile-friendly interface built with Docusaurus
+- **Modern UI/UX**: Clean and intuitive user interface
 
-## Backend Implementation
+## 📁 Project Structure
 
-The backend includes:
-- A translation service (`src/services/translation_service.py`)
-- A translation API endpoint (`src/api/routes/translation.py`)
-- Integration with the main API router
-
-## Frontend Implementation
-
-The frontend includes:
-- A custom DocItem component that overrides the default Docusaurus behavior
-- A TranslationButton component that handles the UI and API calls
-- Proper content extraction and display
-
-## Setup
-
-### Backend
-1. Navigate to the backend directory: `cd backend\Backend-auth`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Start the server: `uvicorn src.main:app --reload --port 8000`
-
-### Frontend
-1. Navigate to the website directory: `cd my-website`
-2. Install dependencies: `npm install`
-3. Install additional dependencies for environment variables: `npm install dotenv process`
-4. Start the development server: `npm run start`
-
-## Configuration
-
-The API URL is configured in the `.env` file in the my-website directory:
 ```
-REACT_APP_API_URL=http://localhost:8000/api/v1
+final-book/
+├── backend/                 # Backend services (currently excluded from git)
+├── frontend/               # Additional frontend components
+├── my-website/             # Main Docusaurus website
+│   ├── src/                # Source code for custom components
+│   ├── static/             # Static assets
+│   └── docusaurus.config.ts # Docusaurus configuration
+├── specs/                  # Project specifications and documentation
+├── history/                # Project history and prompts
+└── .specify/               # Specification tools and templates
 ```
 
-For the environment variables to work properly in Docusaurus, make sure to:
-1. Install the required dependencies: `npm install dotenv process`
-2. The docusaurus.config.ts file includes a plugin to properly expose environment variables to the client
+## 🛠️ Tech Stack
 
-## Extending the Translation Service
+- **Frontend**: React, TypeScript, Docusaurus
+- **Backend**: Python, FastAPI (not included in this push)
+- **Authentication**: Custom authentication system
+- **Translation**: MyMemory API integration
+- **UI Framework**: Docusaurus with custom components
+- **Build Tools**: Node.js, npm
 
-To use MyMemory Translation API instead of the mock service:
+## 🚀 Getting Started
 
-1. MyMemory Translation API is already configured and ready to use
-2. The service uses the public MyMemory API endpoint which is free for basic usage
-3. For higher usage limits, you can optionally set an API key via the MYMEMORY_API_KEY environment variable
-4. The backend is already configured to use MyMemory with fallback to mock translation if the API is not available
+### Prerequisites
 
-### Setting up MyMemory API key (optional for higher usage limits):
+- Node.js (v14 or higher)
+- npm or yarn
+- Python (for backend services)
 
-1. Sign up at [MyMemory Translation API](https://mymemory.translated.net/) to get an API key
-2. Set the environment variable MYMEMORY_API_KEY to your API key:
-   - On Windows: `set MYMEMORY_API_KEY="your-api-key"`
-   - On Linux/Mac: `export MYMEMORY_API_KEY="your-api-key"`
+### Installation
 
-The backend service is already configured to use MyMemory Translation API with fallback to mock translation if the API is not available.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/QadirKhan9/New-Ai-book.git
+   cd New-Ai-book
+   ```
 
-## Current Limitations
+2. Navigate to the website directory:
+   ```bash
+   cd my-website
+   ```
 
-- Content extraction is based on document metadata rather than full content (would need more sophisticated content extraction for full chapters)
-- Requires Google Cloud account and Translation API setup for real translation
-- The mock translation service is used when Google Cloud credentials are not available
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Set up environment variables:
+   Create a `.env` file in the `my-website` directory with the following content:
+   ```
+   REACT_APP_API_URL=http://localhost:8000/api/v1
+   ```
+
+### Running the Application
+
+1. Start the Docusaurus development server:
+   ```bash
+   npm run start
+   ```
+
+2. The application will be available at `http://localhost:3000`
+
+### Backend Setup (Optional)
+
+If you need to run the backend services:
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Start the backend server:
+   ```bash
+   uvicorn src.main:app --reload --port 8000
+   ```
+
+## 🔐 Authentication System
+
+The project includes a complete authentication system with:
+
+- User registration and login
+- Profile management
+- Protected routes
+- Session management
+
+To access protected features, users need to sign up or sign in using the authentication forms.
+
+## 🌐 Translation Feature
+
+The AI-powered translation feature allows users to:
+
+- Translate content to Urdu with a single click
+- Toggle between original and translated content
+- Support for multiple languages (configurable)
+
+The translation service uses the MyMemory API with fallback to mock translation if needed.
+
+## 🤖 AI Chat Widget
+
+An interactive chat widget is integrated into the website that provides:
+
+- AI-powered responses to user queries
+- Context-aware conversations
+- Seamless integration with the documentation
+
+## 📝 Documentation
+
+Project specifications and documentation can be found in the `specs/` directory:
+
+- Feature specifications
+- Architecture plans
+- Task breakdowns
+- Research documents
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🐛 Issues
+
+If you encounter any issues or have feature requests, please open an issue in the GitHub repository.
+
+## 🙏 Acknowledgments
+
+- Docusaurus for the documentation framework
+- React for the component library
+- MyMemory API for translation services
+- All contributors who have helped with this project
